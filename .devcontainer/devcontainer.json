@@ -3,7 +3,11 @@
 {
 	"name": "C++",
 	"build": {
-		"dockerfile": "Dockerfile"
+		"dockerfile": "Dockerfile",
+		"args": { 
+			"ESP_IDF_VERSTION": "v5.2.1",
+			"TARGET_DEVICE": "esp32"
+		}
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/python:1": {}
