@@ -16,8 +16,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     dfu-util \
     libusb-1.0-0
 
-ARG ESP_IDF_VERSTION="v5.2.1"
-ARG TARGET_DEVICE="esp32"
+ARG ESP_IDF_VERSTION="${templateOption:version}"
+ARG TARGET_DEVICE="${templateOption:target}"
 
 RUN mkdir -p /opt && cd /opt \
     && git clone --filter=blob:none --no-checkout -b ${ESP_IDF_VERSTION} --recursive https://github.com/espressif/esp-idf.git \
