@@ -1,0 +1,33 @@
+name: Test dev container templates
+
+on:
+  workflow_call:
+    inputs:
+      template:
+        type: string
+        description: 'Template to test'
+        required: true
+        default: 'esp-idf'
+
+  workflow_dispatch:
+    inputs:
+      template:
+        description: 'Template to test'
+        required: true
+        default: 'esp-idf'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build template
+        run: |
+          ${{ github.action_path }}/build.sh ${{ inputs.template }}
+
+      - name: Launch dev container
+        run: devcontainer up --id-label test-container=${{ inputs.template }} --workspace-folder src/${{ inputs.template }}
+
+      - name: Test template
+        run: ${{ github.action_path }}/test.sh  ${{ inputs.template }}
