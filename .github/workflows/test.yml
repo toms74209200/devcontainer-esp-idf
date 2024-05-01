@@ -30,7 +30,7 @@ jobs:
           .github/workflows/build.sh ${{ inputs.template }}
 
       - name: Launch dev container
-        run: devcontainer up --id-label test-container=${{ inputs.template }} --workspace-folder src/${{ inputs.template }}
+        run: devcontainer up --id-label test-container=${{ inputs.template }} --workspace-folder /tmp/${{ inputs.template }}
 
       - name: Test template
         run: src/${{ inputs.template }}/test.sh  ${{ inputs.template }}
