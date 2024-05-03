@@ -3,9 +3,6 @@ TEMPLATE_ID="$1"
 
 set -e
 
-SRC_DIR="/tmp/${TEMPLATE_ID}"
-cp -R "src/${TEMPLATE_ID}" "${SRC_DIR}"
-
 pushd ${SRC_DIR}
 
 # Configure templates only if `devcontainer-template.json` contains the `options` property.
