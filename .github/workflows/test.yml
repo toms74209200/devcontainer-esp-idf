@@ -33,4 +33,4 @@ jobs:
         run: devcontainer up --id-label test-container=${{ inputs.template }} --workspace-folder /tmp/${{ inputs.template }}
 
       - name: Test template
-        run: ${{ github.workspace }}/src/${{ inputs.template }}/test.sh  ${{ inputs.template }}
+        run: ${{ github.workspace }}/test/${{ inputs.template }}/test.sh  ${{ inputs.template }}
