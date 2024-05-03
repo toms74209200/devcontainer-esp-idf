@@ -34,12 +34,3 @@ if [ "${OPTION_PROPERTY}" != "" ] && [ "${OPTION_PROPERTY}" != "null" ] ; then
 fi
 
 popd
-
-TEST_DIR="test/${TEMPLATE_ID}"
-if [ -d "${TEST_DIR}" ] ; then
-    echo "(*) Copying test folder"
-    DEST_DIR="${SRC_DIR}/test-project"
-    mkdir -p ${DEST_DIR}
-    cp -Rp ${TEST_DIR}/* ${DEST_DIR}
-    cp test/test-utils/test-utils.sh ${DEST_DIR}
-fi
