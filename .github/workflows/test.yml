@@ -25,6 +25,11 @@ jobs:
       - name: Install devcontainers CLI
         run: npm install -g @devcontainers/cli
 
+      - name: Copy files
+        run: |
+          cp -R src/${{ inputs.template }} /tmp/${{ inputs.template }}
+          cp -R test/${{ inputs.template }} /tmp/${{ inputs.template }}
+
       - name: Build template
         run: |
           .github/workflows/build.sh ${{ inputs.template }}
@@ -33,4 +38,4 @@ jobs:
         run: devcontainer up --id-label test-container=${{ inputs.template }} --workspace-folder /tmp/${{ inputs.template }}
 
       - name: Test template
-        run: ${{ github.workspace }}/test/${{ inputs.template }}/test.sh  ${{ inputs.template }}
+        run: devcontainer exec --workspace-folder /tmp/${{ inputs.template }} --id-label test-container=${{ inputs.template }} --command "cd /tmp/${{ inputs.template }} && ./test.sh"
