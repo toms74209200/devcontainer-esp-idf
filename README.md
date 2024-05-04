@@ -7,7 +7,7 @@ Dev container template of ESP-IDF
 You can use this template by devcontainer CLI.
 
 ```bash
-$ devcontainer templates apply --template-id=toms74209200/devcontainer-esp-idf/esp-idf
+$ devcontainer templates apply --template-id=ghcr.io/toms74209200/devcontainer-esp-idf/esp-idf
 ```
 
 You can check if esp-idf works correctly by using the examples project.
