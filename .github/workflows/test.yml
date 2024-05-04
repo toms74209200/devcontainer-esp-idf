@@ -28,7 +28,7 @@ jobs:
       - name: Copy files
         run: |
           cp -R src/${{ inputs.template }} /tmp/${{ inputs.template }}
-          cp -R test/${{ inputs.template }} /tmp/${{ inputs.template }}
+          cp -R test/${{ inputs.template }} /tmp
           mkdir -p /tmp/test-utils
           cp -R test/test-utils/test-utils.sh /tmp/test-utils/test-utils.sh
 
@@ -37,7 +37,7 @@ jobs:
           .github/workflows/build.sh ${{ inputs.template }}
 
       - name: Launch dev container
-        run: devcontainer up --id-label test-container=${{ inputs.template }} --workspace-folder /tmp/${{ inputs.template }}
+        run: devcontainer up --id-label test-container=${{ inputs.template }} --workspace-folder "/tmp/${{ inputs.template }}"
 
       - name: Test template
-        run: devcontainer exec --workspace-folder /tmp/${{ inputs.template }} --id-label test-container=${{ inputs.template }} /bin/bash -c "cd /tmp/${{ inputs.template }} && ./test.sh"
+        run: devcontainer exec --id-label test-container=${{ inputs.template }} --workspace-folder "/tmp/${{ inputs.template }}" /bin/bash -c "cd /tmp/${{ inputs.template }} && ./test.sh"
