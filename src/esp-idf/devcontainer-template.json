@@ -1,5 +1,6 @@
 {
     "id": "esp-idf",
+    "version": "1.0.0",
     "name": "ESP-IDF",
     "options": {
         "version": {
