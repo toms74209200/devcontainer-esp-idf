@@ -29,6 +29,7 @@ jobs:
         run: |
           cp -R src/${{ inputs.template }} /tmp/${{ inputs.template }}
           cp -R test/${{ inputs.template }} /tmp/${{ inputs.template }}
+          mkdir -p /tmp/test-utils
           cp -R test/test-utils/test-utils.sh /tmp/test-utils/test-utils.sh
 
       - name: Build template
